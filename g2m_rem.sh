@@ -19,21 +19,27 @@ function trash () {
     fi
   done
 }
-# Delete GoToMeeting Plists
-defaults delete com.citrixonline.GoToMeeting >/dev/null 2>&1 || echo
-defaults -currentHost delete com.citrixonline.GoToMeeting >/dev/null 2>&1 || echo
-defaults delete com.citrixonline.G2MUpdate >/dev/null 2>&1 || echo
-defaults -currentHost delete com.citrixonline.G2MUpdate >/dev/null 2>&1 || echo
-##
-## Delete Launcher Plist
-defaults -currentHost delete com.citrixonline.mac.WebDeploymentApp >/dev/null 2>&1 || echo
-defaults delete com.citrixonline.mac.WebDeploymentApp >/dev/null 2>&1 || echo
-##
+#
+## Make sure GoToMeeting and GoToMeeting Recording Manager are quit
+AppNames=("\"GoToMeeting\"" "\"GoToMeeting Recording Manager\"")
+for x in "${AppNames[@]}"
+do
+	osascript -e "quit app ${x}"
+done
+#
+## Delete GoToMeeting Plists
+Plists=("com.citrixonline.GoToMeeting" "com.citrixonline.G2MUpdate" "com.citrixonline.mac.WebDeploymentApp")
+for x in "${Plists[@]}"
+do
+	defaults delete "$x" >/dev/null 2>&1 || echo
+	defaults -currentHost delete "$x" >/dev/null 2>&1 || echo
+done
+#
 ## Delete GoToMeeting apps from Desktop, system Applications, and user Applications.
-trash ~/Desktop/GoToMeeting* >/dev/null 2>&1 || echo
 trash /Applications/GoToMeeting* >/dev/null 2>&1 || echo
 trash ~/Applications/GoToMeeting* >/dev/null 2>&1 || echo
+trash ~/Desktop/GoToMeeting* >/dev/null 2>&1 || echo
 trash ~/Library/Application\ Support/CitrixOnline/GoToMeeting* >/dev/null 2>&1 || echo
-##
+#
 ## Delete Launcher
-trash ~/Library/Application\ Support/CitrixOnline/CitrixOnlineLauncher >/dev/null 2>&1 || echo
+trash ~/Library/Application\ Support/CitrixOnline/CitrixOnlineLauncher.app >/dev/null 2>&1 || echo
