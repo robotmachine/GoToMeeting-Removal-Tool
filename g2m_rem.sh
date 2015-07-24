@@ -36,6 +36,7 @@ do
 done
 #
 ## Delete GoToMeeting apps from Desktop, system Applications, and user Applications.
+mdfind -name GoToMeeting | grep -v Removal | grep -v ShareFile | grep .app | xargs -I {} trash {} >/dev/null 2>&1 || echo
 trash /Applications/GoToMeeting* >/dev/null 2>&1 || echo
 trash ~/Applications/GoToMeeting* >/dev/null 2>&1 || echo
 trash ~/Desktop/GoToMeeting* >/dev/null 2>&1 || echo
