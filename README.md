@@ -1,10 +1,13 @@
 #GoToMeeting Removal Tool
 Unofficial GoToMeeting Removal tool for OSX.  
-Version 1.3.1
+Version 1.3.2
 
-Just need to download the tool? [Click Here](https://citrix.sharefile.com/d/s36588f178a94a949)  
+Just need to download the tool? [Click Here](https://citrix.sharefile.com/d/sbc450d99d2744d69)  
 
 ##CHANGELOG
+### 12 February, 2016 (v1.3.2)
+* Fixed typo in plist removal
+
 ### 12 February, 2016 (v1.3.1)
 * Fixed mdfind command
 * Added backup command to remove plist files

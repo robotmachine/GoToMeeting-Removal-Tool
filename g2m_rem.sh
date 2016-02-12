@@ -10,7 +10,7 @@
 # |  _ <  __/ | | | | | (_) \ V / (_| | |   | | (_) | (_) | |
 # |_| \_\___|_| |_| |_|\___/ \_/ \__,_|_|   |_|\___/ \___/|_|
 #                                                            
-# Version 1.3.1
+# Version 1.3.2
 # Created by Brian A Carter and Kyle Halversen
 #
 ## Functions
@@ -51,7 +51,7 @@ for x in "${Plists[@]}"
 do
 	defaults delete "$x" >> $logFile 2>&1
 	defaults -currentHost delete "$x" >> $logFile 2>&1
-	trash ~/Library/Preferences/"$x" >> $logFile 2>&1
+	trash ~/Library/Preferences/"$x".plist >> $logFile 2>&1
 done
  
 ## Delete GoToMeeting apps from Desktop, system Applications, and user Applications.
