@@ -9,7 +9,7 @@ Just need to download the tool? [Click Here](https://citrix.sharefile.com/d/sbc4
 * Fixed typo in plist removal
 
 ### 12 February, 2016 (v1.3.1)
-* Fixed mdfind command
+* Fixed `mdfind` command
 * Added backup command to remove plist files
 
 ### 04 February, 2016 (v1.3.0)
