@@ -56,12 +56,13 @@ done
  
 ## Delete GoToMeeting apps from Desktop, system Applications, and user Applications.
 logcomment "Trash Using MDFind"
-locations=("/Applications" "~/Applications" "~/Desktop")
-mdfind -name GoToMeeting | grep -v Removal | grep -v ShareFile | grep .app | xargs -I {} trash {} >> $logFile 2>&1
-trash /Applications/GoToMeeting* >> $logFile 2>&1
-trash ~/Applications/GoToMeeting* >> $logFile 2>&1
-trash ~/Desktop/GoToMeeting* >> $logFile 2>&1
-trash ~/Library/Application\ Support/CitrixOnline/GoToMeeting* >> $logFile 2>&1
+mdfind -name GoToMeeting | grep -iv Removal | grep -iv ShareFile | grep -iv Firefox | grep -iv Chrome | grep -iv Safari | grep -iv CrashReporter | grep .app | xargs -I {} trash {} >> $logFile 2>&1
+
+locations=("/Applications" "$HOME/Applications" "$HOME/Desktop" "$HOME/Library/Application Support/CitrixOnline")
+for x in "${locations[@]}"
+do
+	trash "$x"/GoToMeeting* >> $logFile 2>&1
+done
  
 ## Delete Launcher
 trash ~/Library/Application\ Support/CitrixOnline/CitrixOnlineLauncher.app >> $logFile 2>&1
