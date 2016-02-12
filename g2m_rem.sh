@@ -14,7 +14,6 @@
 # Created by Brian A Carter and Kyle Halversen
 #
 ## Functions
-#
 # Creates a local function to move to trash instead of permanently deleting.
 function trash () {
   local path
@@ -34,34 +33,35 @@ function trash () {
     fi
   done
 }
-#
+
 ## Log File Comment
 logcomment() {
 	echo "" >> $logFile
 	echo "### $@ ###" >> $logFile
 }
-#
+ 
 ## Establish a log file
 logFile=~/Library/Logs/com.citrixonline.g2mremoval.log
 echo "GoToMeeting Removal Tool .:. Log started $(date)\n" > $logFile
-#
+ 
 ## Delete GoToMeeting Plists
 logcomment "Delete Plists"
-#
 Plists=("com.citrixonline.GoToMeeting" "com.citrixonline.G2MUpdate" "com.citrixonline.mac.WebDeploymentApp")
 for x in "${Plists[@]}"
 do
 	defaults delete "$x" >> $logFile 2>&1
 	defaults -currentHost delete "$x" >> $logFile 2>&1
+	trash ~/Library/Preferences/"$x" >> $logFile 2>&1
 done
-#
+ 
 ## Delete GoToMeeting apps from Desktop, system Applications, and user Applications.
 logcomment "Trash Using MDFind"
+locations=("/Applications" "~/Applications" "~/Desktop")
 mdfind -name GoToMeeting | grep -v Removal | grep -v ShareFile | grep .app | xargs -I {} trash {} >> $logFile 2>&1
 trash /Applications/GoToMeeting* >> $logFile 2>&1
 trash ~/Applications/GoToMeeting* >> $logFile 2>&1
 trash ~/Desktop/GoToMeeting* >> $logFile 2>&1
 trash ~/Library/Application\ Support/CitrixOnline/GoToMeeting* >> $logFile 2>&1
-#
+ 
 ## Delete Launcher
 trash ~/Library/Application\ Support/CitrixOnline/CitrixOnlineLauncher.app >> $logFile 2>&1
