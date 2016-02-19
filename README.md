@@ -2,7 +2,7 @@
 Unofficial GoToMeeting Removal tool for OSX.  
 Version 1.3.2
 
-Just need to download the tool? [Click Here](https://citrix.sharefile.com/d/sbc450d99d2744d69)  
+Just need to download the tool? [Click Here](https://github.com/robotmachine/GoToMeeting-Removal-Tool/releases/download/v1.3.2/GoToMeeting_Removal_Tool_v1.3.2.zip)  
 
 ##CHANGELOG
 ### 12 February, 2016 (v1.3.2)
