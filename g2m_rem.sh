@@ -10,7 +10,7 @@
 # |  _ <  __/ | | | | | (_) \ V / (_| | |   | | (_) | (_) | |
 # |_| \_\___|_| |_| |_|\___/ \_/ \__,_|_|   |_|\___/ \___/|_|
 #                                                            
-# Version 1.3.3
+# Version 1.3.4
 # Created by Brian A Carter and Kyle Halversen
 #
 ## Functions
