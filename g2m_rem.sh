@@ -10,7 +10,7 @@
 # |  _ <  __/ | | | | | (_) \ V / (_| | |   | | (_) | (_) | |
 # |_| \_\___|_| |_| |_|\___/ \_/ \__,_|_|   |_|\___/ \___/|_|
 #                                                            
-# Version 1.3.5
+# Version 1.3.6
 # Created by Brian A Carter and Kyle Halversen
 #
 ## Functions
@@ -66,3 +66,4 @@ done
  
 ## Delete Launcher
 trash ~/Library/Application\ Support/CitrixOnline/CitrixOnlineLauncher.app >> $logFile 2>&1
+trash ~/Applications/CitrixOnline/CitrixOnlineLauncher.app >> $logFile 2>&1

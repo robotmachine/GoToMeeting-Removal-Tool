@@ -1,10 +1,14 @@
 #GoToMeeting Removal Tool
 Unofficial GoToMeeting Removal tool for OSX.  
-Version 1.3.5
+Version 1.3.6
 
-Just need to download the tool? [Click Here](https://github.com/robotmachine/GoToMeeting-Removal-Tool/releases/download/v1.3.5/GoToMeeting-Removal-Tool-v1.3.5.zip)  
+Just need to download the tool? [Click Here](https://github.com/robotmachine/GoToMeeting-Removal-Tool/releases/download/v1.3.6/GoToMeeting-Removal-Tool-v1.3.6.zip)  
 
 ##CHANGELOG
+### 2 November, 2016 (v1.3.6)
+* Added another location for the launcher
+* Fixed icon to include transparency
+
 ### 31 October, 2016 (v1.3.5)
 * Added app icon
 
