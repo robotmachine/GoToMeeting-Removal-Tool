@@ -1,10 +1,14 @@
-#GoToMeeting Removal Tool
-Unofficial GoToMeeting Removal tool for OSX.  
-Version 1.3.7
+# GoToMeeting Removal Tool
+Unofficial GoToMeeting Removal tool for macOS.  
+Version 1.3.8
 
 Just need to download the tool? [Click Here](https://github.com/robotmachine/GoToMeeting-Removal-Tool/releases/download/latest/GoToMeeting-Removal-Tool-latest.zip)  
 
-##CHANGELOG
+## CHANGELOG
+
+### 22 March, 2017 (v1.3.8)
+* Removed references to Citrix
+
 ### 2 November, 2016 (v1.3.7)
 * Added yet another location for the launcher
 * Added LauncherLock file
