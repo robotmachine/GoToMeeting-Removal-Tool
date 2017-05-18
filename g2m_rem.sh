@@ -10,7 +10,7 @@
 # |  _ <  __/ | | | | | (_) \ V / (_| | |   | | (_) | (_) | |
 # |_| \_\___|_| |_| |_|\___/ \_/ \__,_|_|   |_|\___/ \___/|_|
 #                                                            
-# Version 1.3.8
+# Version 1.4.0
 # Created by Brian A Carter and Kyle Halversen
 #
 ## Functions
@@ -69,3 +69,20 @@ trash ~/Library/Application\ Support/CitrixOnline/CitrixOnlineLauncher.app >> $l
 trash ~/Applications/CitrixOnline/CitrixOnlineLauncher.app >> $logFile 2>&1
 trash ~/Applications/CitrixOnline/LaunchLock* >> $logFile 2>&1
 trash ~/Applications/Utilities/CitrixOnline >> $logFile 2>&1
+
+## Clean up Dock
+#!/bin/bash
+
+pb="/usr/libexec/PlistBuddy "
+dockPlist="$HOME/Library/Preferences/com.apple.dock.plist"
+
+for index in {0..50} ; do
+    $pb $dockPlist -c "Print persistent-apps:$index:tile-data:file-label:" >/dev/null 2>&1
+        if [[ "$?" == 0 ]]; then
+            appName=$($pb $dockPlist -c "Print persistent-apps:$index:tile-data:file-label:")
+            if [[ "$appName" == GoToMeeting* ]] ; then
+                $pb $dockPlist -c "Delete persistent-apps:$index"
+                osascript -e 'delay 1' -e 'tell Application "Dock"' -e 'quit' -e 'end tell' -e 'delay 1'
+            fi
+        fi
+done

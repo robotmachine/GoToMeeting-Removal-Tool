@@ -6,6 +6,9 @@ Just need to download the tool? [Click Here](https://github.com/robotmachine/GoT
 
 ## CHANGELOG
 
+### 18 May, 2017 (V1.4.0)  
+* Removal tool now cleans up GoToMeeting icons from the dock  
+  
 ### 22 March, 2017 (v1.3.8)
 * Removed references to Citrix
 
