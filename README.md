@@ -6,6 +6,9 @@ Just need to download the tool? [Click Here](https://github.com/robotmachine/GoT
 
 ## CHANGELOG
 
+### 11 July, 2017 (V1.4.3)
+* Updated for LogMeIn name in paths
+
 ### 18 May, 2017 (V1.4.0)  
 * Removal tool now cleans up GoToMeeting icons from the dock  
   

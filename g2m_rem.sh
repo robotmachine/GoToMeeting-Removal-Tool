@@ -10,7 +10,7 @@
 # |  _ <  __/ | | | | | (_) \ V / (_| | |   | | (_) | (_) | |
 # |_| \_\___|_| |_| |_|\___/ \_/ \__,_|_|   |_|\___/ \___/|_|
 #                                                            
-# Version 1.4.0
+# Version 1.4.3
 # Created by Brian A Carter and Kyle Halversen
 #
 ## Functions
@@ -33,43 +33,69 @@ function trash () {
     fi
   done
 }
-
+#
 ## Log File Comment
 logcomment() {
 	echo "" >> $logFile
 	echo "### $@ ###" >> $logFile
 }
- 
+#
 ## Establish a log file
 logFile=~/Library/Logs/com.citrixonline.g2mremoval.log
 echo "GoToMeeting Removal Tool .:. Log started $(date)\n" > $logFile
- 
+#
 ## Delete GoToMeeting Plists
 logcomment "Delete Plists"
-Plists=("com.citrixonline.GoToMeeting" "com.citrixonline.G2MUpdate" "com.citrixonline.mac.WebDeploymentApp")
-for x in "${Plists[@]}"
+gtmPlists=(
+    com.citrixonline.GoToMeeting
+    com.citrixonline.G2MUpdate
+    com.citrixonline.mac.WebDeploymentApp
+    com.logmein.GoToMeeting
+    com.logmein.G2MUpdate
+    com.logmein.COLVideo
+       )
+for gtmPlist in "${gtmPlists[@]}"
 do
-	defaults delete "$x" >> $logFile 2>&1
-	defaults -currentHost delete "$x" >> $logFile 2>&1
-	trash ~/Library/Preferences/"$x".plist >> $logFile 2>&1
+	defaults delete "$gtmPlist" >> $logFile 2>&1
+	defaults -currentHost delete "$gtmPlist" >> $logFile 2>&1
+	trash ~/Library/Preferences/"$gtmPlist"*.plist >> $logFile 2>&1
+	trash ~/Library/Preferences/ByHost/"$gtmPlist"*.plist >> $logFile 2>&1
 done
- 
+#
 ## Delete GoToMeeting apps from Desktop, system Applications, and user Applications.
-logcomment "Trash Using MDFind"
-mdfind -name GoToMeeting | grep -iv Removal | grep -iv ShareFile | grep -iv Firefox | grep -iv Chrome | grep -iv Safari | grep -iv CrashReporter | grep .app | xargs -I {} trash {} >> $logFile 2>&1
-
-locations=("/Applications" "$HOME/Applications" "$HOME/Desktop" "$HOME/Library/Application Support/CitrixOnline")
-for x in "${locations[@]}"
+gtmLocations=(
+    "/Applications"
+    "$HOME/Applications"
+    "$HOME/Desktop"
+    "$HOME/Library/Application Support/CitrixOnline"
+             )
+for gtmLoc in "${gtmLocations[@]}"
 do
-	trash "$x"/GoToMeeting* >> $logFile 2>&1
+	trash "$gtmLoc"/GoToMeeting* >> $logFile 2>&1
 done
- 
+#
 ## Delete Launcher
-trash ~/Library/Application\ Support/CitrixOnline/CitrixOnlineLauncher.app >> $logFile 2>&1
-trash ~/Applications/CitrixOnline/CitrixOnlineLauncher.app >> $logFile 2>&1
-trash ~/Applications/CitrixOnline/LaunchLock* >> $logFile 2>&1
-trash ~/Applications/Utilities/CitrixOnline >> $logFile 2>&1
-
+gtoLocations=(
+    "$HOME/Library/Application Support/CitrixOnline/CitrixOnlineLauncher.app"
+    "$HOME/Applications/CitrixOnline/CitrixOnlineLauncher.app"
+    "$HOME/Applications/CitrixOnline/LaunchLock*"
+    "$HOME/Applications/Utilities/CitrixOnline"
+             )
+for gtoLoc in "${gtoLocations[@]}"; do
+    trash "$gtoLoc" >> $logFile 2>&1
+done
+#
+## Clean Caches
+gtmCache=(
+    com.citrixonline.GoToMeeting
+    com.citrixonline.mac.WebDeploymentApp
+    com.logmein.gotomeeting
+    com.logmein.GoToMeeting
+         )
+for gotoCache in "${gtmCache[@]}"; do
+    trash "$HOME"/Library/Caches/"$gotoCache"* >> $logFile 2>&1
+done
+#
 ## Clean up Dock
 #!/bin/bash
 
