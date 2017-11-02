@@ -1,11 +1,14 @@
 # GoToMeeting Removal Tool
 Unofficial GoToMeeting Removal tool for macOS.  
-Version 1.3.8
+Version 1.4.4
 
 Just need to download the tool? [Click Here](https://github.com/robotmachine/GoToMeeting-Removal-Tool/releases/download/latest/GoToMeeting-Removal-Tool-latest.zip)  
 
 ## CHANGELOG
 
+### 2 November, 2017 (V1.4.4)
+* Updated log file path to remove Citrix Online
+  
 ### 11 July, 2017 (V1.4.3)
 * Updated for LogMeIn name in paths
 

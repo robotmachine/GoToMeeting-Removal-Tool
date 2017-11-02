@@ -10,7 +10,7 @@
 # |  _ <  __/ | | | | | (_) \ V / (_| | |   | | (_) | (_) | |
 # |_| \_\___|_| |_| |_|\___/ \_/ \__,_|_|   |_|\___/ \___/|_|
 #                                                            
-# Version 1.4.3
+# Version 1.4.4
 # Created by Brian A Carter and Kyle Halversen
 #
 ## Functions
@@ -41,7 +41,7 @@ logcomment() {
 }
 #
 ## Establish a log file
-logFile=~/Library/Logs/com.citrixonline.g2mremoval.log
+logFile=~/Library/Logs/com.logmein.g2mremoval.log
 echo "GoToMeeting Removal Tool .:. Log started $(date)\n" > $logFile
 #
 ## Delete GoToMeeting Plists
