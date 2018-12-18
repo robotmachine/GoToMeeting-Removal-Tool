@@ -10,7 +10,7 @@
 # |  _ <  __/ | | | | | (_) \ V / (_| | |   | | (_) | (_) | |
 # |_| \_\___|_| |_| |_|\___/ \_/ \__,_|_|   |_|\___/ \___/|_|
 #                                                            
-# Version 1.4.4
+# Version 1.5.0
 # Created by Brian A Carter and Kyle Halversen
 #
 ## Functions
@@ -51,6 +51,7 @@ gtmPlists=(
     com.citrixonline.G2MUpdate
     com.citrixonline.mac.WebDeploymentApp
     com.logmein.GoToMeeting
+    com.logmein.gotomeeting
     com.logmein.G2MUpdate
     com.logmein.COLVideo
        )
@@ -68,6 +69,7 @@ gtmLocations=(
     "$HOME/Applications"
     "$HOME/Desktop"
     "$HOME/Library/Application Support/CitrixOnline"
+    "$HOME/Library/Application Support/LogMeInInc"
              )
 for gtmLoc in "${gtmLocations[@]}"
 do
@@ -77,12 +79,24 @@ done
 ## Delete Launcher
 gtoLocations=(
     "$HOME/Library/Application Support/CitrixOnline/CitrixOnlineLauncher.app"
+    "$HOME/Library/Application Support/GoToOpener*"
     "$HOME/Applications/CitrixOnline/CitrixOnlineLauncher.app"
     "$HOME/Applications/CitrixOnline/LaunchLock*"
     "$HOME/Applications/Utilities/CitrixOnline"
+    "$HOME/Library/com.logmein.GoToMeeting.G2MAIRUploader.plist"
+    "$HOME/Library/com.logmein.GoToMeeting.G2MUpdate.plist"
              )
 for gtoLoc in "${gtoLocations[@]}"; do
     trash "$gtoLoc" >> $logFile 2>&1
+done
+#
+## Clean Cookies
+gtmCookies=(
+    "$HOME/Library/Cookies/com.logmein.GoToMeeting-Scheduler-for-Mac.binarycookies"
+    "$HOME/Library/Cookies/com.logmein.GoToMeeting.binarycookies"
+    )
+for gtmCookie in "${gtmCookies[@]}"; do
+    trash "$gtmCookie" >> $logFile 2>&1
 done
 #
 ## Clean Caches
